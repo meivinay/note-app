@@ -16,10 +16,12 @@ const NotesList = async (props: Props) => {
   ).rows;
 
   return notes.map((note: { id: number; title: string; body: string }) => (
-    <div key={note.id} className="border my-3 mx-4 px-3 py-4 rounded">
-      <p>{note.title}</p>
-      <p>{note.body}</p>
-    </div>
+    <ul key={note.id} className="border my-3 mx-4 px-3 py-4 rounded">
+      <li>
+        <p>{note.title}</p>
+        <p>{note.body}</p>
+      </li>
+    </ul>
   ));
 };
 
