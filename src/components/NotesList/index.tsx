@@ -17,6 +17,7 @@ const NotesList = async (props: Props) => {
   const { searchParams } = props;
   const searchText = await searchParams;
   const { q = "" } = searchText;
+
   const notes = (
     await db.query(
       `select * from notes where title ilike $1 order by id desc`,
