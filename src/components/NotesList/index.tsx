@@ -1,7 +1,16 @@
 import db from "~/db";
+import SidebarNote from "../SidebarNote";
+
 type Props = {
   searchText?: string;
   searchParams?: Promise<string>;
+};
+
+type Note = {
+  id: number;
+  title: string;
+  body: string;
+  updated_at: Date;
 };
 
 const NotesList = async (props: Props) => {
@@ -15,11 +24,14 @@ const NotesList = async (props: Props) => {
     )
   ).rows;
 
-  return notes.map((note: { id: number; title: string; body: string }) => (
+  return notes.map((note: Note) => (
     <ul key={note.id} className="border my-3 mx-4 px-3 py-4 rounded">
-      <li>
-        <p>{note.title}</p>
-        <p>{note.body}</p>
+      <li className="relative">
+        <SidebarNote
+          title={note.title}
+          body={note.body}
+          updatedDate={note.updated_at}
+        />
       </li>
     </ul>
   ));
