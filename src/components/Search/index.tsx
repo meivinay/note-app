@@ -10,7 +10,8 @@ const Search: React.FC = () => {
   return (
     <>
       <input
-        className="rounded-2xl border border-solid border-gray-300 rounded mt-4 ml-4 px-4"
+        className="rounded-2xl border border-solid border-gray-300 rounded px-4"
+        placeholder="Search a Note"
         value={searchText}
         onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
           setSearchText(event.target.value);

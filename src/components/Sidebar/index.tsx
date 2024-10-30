@@ -1,17 +1,20 @@
 import React, { Suspense } from "react";
 import Search from "~/components/Search";
 import NotesList from "~/components/NotesList";
-import AddNoteBtn from "../AddNoteBtn";
 
-const Sidebar: React.FC = (props) => {
+type Props = {
+  searchText?: string;
+  searchParams: Promise<{ q: string }>;
+};
+
+const Sidebar: React.FC<Props> = (props) => {
   return (
-    <>
+    <aside className="flex flex-col gap-y-4 mt-4 mx-3">
       <Search />
-      <AddNoteBtn />
       <Suspense fallback={<p>Loading</p>}>
         <NotesList {...props} />
       </Suspense>
-    </>
+    </aside>
   );
 };
 

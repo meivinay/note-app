@@ -3,7 +3,7 @@ import SidebarNote from "../SidebarNote";
 
 type Props = {
   searchText?: string;
-  searchParams?: Promise<string>;
+  searchParams: Promise<{ q: string }>;
 };
 
 type Note = {
@@ -15,8 +15,7 @@ type Note = {
 
 const NotesList = async (props: Props) => {
   const { searchParams } = props;
-  const searchText = await searchParams;
-  const { q = "" } = searchText;
+  const { q = "" } = await searchParams;
 
   const notes = (
     await db.query(
@@ -26,7 +25,7 @@ const NotesList = async (props: Props) => {
   ).rows;
 
   return notes.map((note: Note) => (
-    <ul key={note.id} className="border my-3 mx-4 px-3 py-4 rounded">
+    <ul key={note.id} className="border px-3 py-4 rounded">
       <li className="relative">
         <SidebarNote
           title={note.title}

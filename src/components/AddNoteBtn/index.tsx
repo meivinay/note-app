@@ -1,32 +1,22 @@
 "use client";
-import { useState } from "react";
-import Form from "next/form";
-import addNote from "./addNoteAction";
-const AddNoteBtn = () => {
+import React, { useState } from "react";
+
+type Props = {
+  children: React.ReactNode;
+};
+const AddNoteBtn: React.FC<Props> = ({ children }) => {
   const [textAreaVisi, setTextAreaVisi] = useState<boolean>(false);
   return (
-    <>
+    <section className="flex">
       <button
-        className="ml-4 border py-1 px-4 rounded-xl"
+        className="border py-1 px-4 rounded-xl"
         onClick={() => setTextAreaVisi((prev) => !prev)}
         type="button"
       >
-        Add
+        NEW
       </button>
-      {textAreaVisi ? (
-        <Form action={addNote}>
-          <input
-            type="text"
-            name="note-input"
-            placeholder="Add your note here"
-            className="rounded-2xl border border-solid border-gray-300 rounded mt-4 ml-4 px-4"
-          />
-          <button className="ml-4 border py-1 px-4 rounded-xl" type="submit">
-            Submit
-          </button>
-        </Form>
-      ) : null}
-    </>
+      {textAreaVisi ? children : null}
+    </section>
   );
 };
 

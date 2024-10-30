@@ -1,8 +1,8 @@
 "use server";
 import db from "~/db";
 
-const addNote = async (formData) => {
-  const title = formData.get("note-input");
+const addNote = async (formData: FormData) => {
+  const title = formData.get("note-title");
   try {
     await db.query(
       "insert into notes (title, body, created_at, updated_at) values ($1, $2, $3, $3) returning id",
