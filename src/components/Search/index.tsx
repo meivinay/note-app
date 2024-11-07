@@ -1,21 +1,28 @@
 "use client";
-
-import { useState } from "react";
-
 import { useRouter } from "next/navigation";
 
-const Search: React.FC = () => {
-  const [searchText, setSearchText] = useState<string>("");
+type Props = {
+  searchParams: string;
+  renderProps?: (searchText: string) => React.ReactElement;
+};
+
+const Search: React.FC<Props> = (props) => {
+  const { searchParams = "" } = props;
+
   const router = useRouter();
   return (
     <>
       <input
         className="rounded-2xl border border-solid border-gray-300 rounded px-4"
         placeholder="Search a Note"
-        value={searchText}
+        value={searchParams || undefined}
         onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-          setSearchText(event.target.value);
-          const newSearchParam = new URLSearchParams({ q: event.target.value });
+          if (event.target.value === "") {
+            router.push("/");
+          }
+          const newSearchParam = new URLSearchParams({
+            q: event.target.value,
+          });
           router.push(`?${newSearchParam}`);
         }}
       />

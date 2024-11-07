@@ -3,7 +3,7 @@ import SidebarNote from "../SidebarNote";
 
 type Props = {
   searchText?: string;
-  searchParams: Promise<{ q: string }>;
+  searchParams: string;
 };
 
 type Note = {
@@ -15,12 +15,11 @@ type Note = {
 
 const NotesList = async (props: Props) => {
   const { searchParams } = props;
-  const { q = "" } = await searchParams;
 
   const notes = (
     await db.query(
       `select * from notes where title ilike $1 order by id desc`,
-      ["%" + q + "%"]
+      ["%" + searchParams + "%"]
     )
   ).rows;
 
@@ -28,9 +27,11 @@ const NotesList = async (props: Props) => {
     <ul key={note.id} className="border px-3 py-4 rounded">
       <li className="relative">
         <SidebarNote
+          noteId={note.id}
           title={note.title}
           body={note.body}
           updatedDate={note.updated_at}
+          searchParams={searchParams}
         />
       </li>
     </ul>

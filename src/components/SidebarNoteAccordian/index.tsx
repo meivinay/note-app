@@ -14,14 +14,26 @@ const NoteAccordian: React.FC<Props> = (props) => {
   return (
     <>
       <button
-        className="absolute right-0"
+        className={`absolute right-0 h-[24px] w-[24px] ${
+          isOpen
+            ? `bg-[url('/keyboard_arrow_up.svg')]`
+            : `bg-[url('/keyboard_arrow_down.svg')]`
+        }`}
         type="button"
         onClick={() => {
           setIsOpen((prev) => !prev);
         }}
-      >
-        ^
-      </button>
+        aria-label={isOpen ? "expand note" : "collapse note"}
+      />
+      {/* <button
+        className="absolute top-0 right-0 left-0 bottom-0"
+        onClick={() => {
+          setIsOpen((prev) => !prev);
+        }}
+        type="button"
+        aria-hidden="true"
+        tabIndex={-1}
+      /> */}
       {children}
       {isOpen ? props.expandedChild : null}
     </>
