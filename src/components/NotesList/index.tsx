@@ -25,7 +25,7 @@ const NotesList = async (props: Props) => {
 
   return notes.map((note: Note) => (
     <ul key={note.id} className="border px-3 py-4 rounded">
-      <li className="relative">
+      <li className="relative flex">
         <SidebarNote
           noteId={note.id}
           title={note.title}

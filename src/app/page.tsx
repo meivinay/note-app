@@ -11,7 +11,7 @@ export default async function Home(props: any) {
   const { searchParams } = props;
   const { note_id: noteId = -1 } = await searchParams;
   return (
-    <div className="flex">
+    <div className="grid grid-cols-twoColumn h-full">
       <Sidebar {...props} />
       <main className="mt-4 grow">
         <AddNoteBtn submitBtn={<SubmitBtn addNote={addNote} />}>

@@ -10,7 +10,7 @@ const Sidebar: React.FC<Props> = async (props) => {
   const { searchParams } = props;
   const { q = "" } = await searchParams;
   return (
-    <aside className="flex flex-col gap-y-4 mt-4 mx-3">
+    <aside className="flex flex-col gap-y-4 mt-4 mx-3 h-full overflow-auto">
       <Search searchParams={q} />
       <Suspense fallback={<p>Loading</p>}>
         <NotesList {...props} searchParams={q} />

@@ -11,6 +11,10 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        test: "red",
+      },
+      gridTemplateColumns: {
+        twoColumn: "minmax(300px, 500px) minmax(700px, 1fr)",
       },
     },
   },

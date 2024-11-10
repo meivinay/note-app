@@ -13,8 +13,12 @@ const NoteAccordian: React.FC<Props> = (props) => {
 
   return (
     <>
+      <div className="grow">
+        {children}
+        {isOpen ? props.expandedChild : null}
+      </div>
       <button
-        className={`absolute right-0 h-[24px] w-[24px] ${
+        className={`ml-auto h-[24px] w-[24px] ${
           isOpen
             ? `bg-[url('/keyboard_arrow_up.svg')]`
             : `bg-[url('/keyboard_arrow_down.svg')]`
@@ -25,17 +29,6 @@ const NoteAccordian: React.FC<Props> = (props) => {
         }}
         aria-label={isOpen ? "expand note" : "collapse note"}
       />
-      {/* <button
-        className="absolute top-0 right-0 left-0 bottom-0"
-        onClick={() => {
-          setIsOpen((prev) => !prev);
-        }}
-        type="button"
-        aria-hidden="true"
-        tabIndex={-1}
-      /> */}
-      {children}
-      {isOpen ? props.expandedChild : null}
     </>
   );
 };
