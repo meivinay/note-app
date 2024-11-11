@@ -13,7 +13,7 @@ const Search: React.FC<Props> = (props) => {
   return (
     <>
       <input
-        className="rounded-2xl border border-solid border-gray-300 rounded px-4"
+        className="rounded-2xl border border-solid border-gray-300 rounded px-4 py-1"
         placeholder="Search a Note"
         value={searchParams || undefined}
         onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
