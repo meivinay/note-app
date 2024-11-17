@@ -8,7 +8,7 @@ const NewNoteForm = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   return (
-    <>
+    <div className="grid grid-cols-twoColumn">
       <Form
         id="new-note"
         className="flex flex-col gap-y-4 mb-4"
@@ -19,7 +19,7 @@ const NewNoteForm = () => {
           name="note-title"
           placeholder="Add your title"
           required
-          className="rounded-2xl border border-solid border-gray-300 rounded px-4 self-start w-4/6 basis-12"
+          className="text-input-colors rounded-2xl border border-solid border-gray-300 px-4 self-start w-4/6 basis-12"
           autoComplete="off"
           value={title}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,14 +30,14 @@ const NewNoteForm = () => {
           value={description}
           name="note-description"
           placeholder="Add your Description"
-          className="rounded-2xl border border-solid border-gray-300 rounded px-4 self-start w-4/6 min-h-44"
+          className="text-input-colors rounded-2xl border border-solid border-gray-300 rounded px-4 self-start w-4/6 min-h-44"
           onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
             setDescription(e.target.value);
           }}
         />
       </Form>
-      <NotePreview title={title} description={description} />
-    </>
+      <NotePreview className="grow" title={title} description={description} />
+    </div>
   );
 };
 

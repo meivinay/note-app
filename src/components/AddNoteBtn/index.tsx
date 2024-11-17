@@ -1,5 +1,6 @@
 "use client";
-import { useRouter } from "next/navigation";
+import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 type Props = {
@@ -7,20 +8,30 @@ type Props = {
   submitBtn: React.ReactNode;
 };
 const AddNoteBtn: React.FC<Props> = ({ children, submitBtn }) => {
-  const [textAreaVisi, setTextAreaVisi] = useState<boolean>(false);
+  const pathname = usePathname();
   const router = useRouter();
+  const textAreaVisi = pathname === "/new" ? true : false;
+  // useState<boolean>();
+
   return (
     <>
-      <div className="mb-4">
+      <div className="self-end">
         <button
-          className="border py-1 px-4 rounded-xl mr-4"
+          className="rounded-xl text-white font-semibold text-lg"
           onClick={() => {
-            setTextAreaVisi((prev) => !prev);
-            router.push("/");
+            if (pathname === "/new") {
+              router.back();
+            } else {
+              router.push("/new");
+              // setTextAreaVisi((prev) => !prev);
+            }
           }}
           type="button"
+          title="add new note"
+          aria-label="add new note"
         >
-          {textAreaVisi ? "Discard" : "NEW"}
+          <Image height="36" width="36" src="/note_add.svg" />
+          {/* {textAreaVisi && pathname === "/new" ? "Discard" : "NEW"} */}
         </button>
         {textAreaVisi ? submitBtn : null}
       </div>

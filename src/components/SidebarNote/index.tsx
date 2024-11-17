@@ -23,7 +23,7 @@ const SidebarNote: React.FC<Props> = (props) => {
           query: { note_id: noteId, q: searchParams || undefined },
         }}
       >
-        <p>{title}</p>
+        <p className="font-bold text-lg">{title}</p>
         <p className="text-sm">{displayDate}</p>
       </Link>
     </NoteAccordian>

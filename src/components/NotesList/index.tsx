@@ -2,8 +2,9 @@ import db from "~/db";
 import SidebarNote from "../SidebarNote";
 
 type Props = {
-  searchText?: string;
+  searchText: string | undefined;
   searchParams: string;
+  activeNoteId: string;
 };
 
 type Note = {
@@ -23,19 +24,28 @@ const NotesList = async (props: Props) => {
     )
   ).rows;
 
-  return notes.map((note: Note) => (
-    <ul key={note.id} className="border px-3 py-4 rounded">
-      <li className="relative flex">
-        <SidebarNote
-          noteId={note.id}
-          title={note.title}
-          body={note.body}
-          updatedDate={note.updated_at}
-          searchParams={searchParams}
-        />
-      </li>
+  return (
+    <ul className="flex flex-col gap-y-4 ">
+      {notes.map((note: Note) => (
+        <li
+          key={note.id}
+          className={`group relative px-3 py-4 rounded flex ${
+            Number(props.activeNoteId) === note.id
+              ? "bg-cyan-100"
+              : "bg-gray-100 hover:bg-gray-200"
+          }`}
+        >
+          <SidebarNote
+            noteId={note.id}
+            title={note.title}
+            body={note.body}
+            updatedDate={note.updated_at}
+            searchParams={searchParams}
+          />
+        </li>
+      ))}
     </ul>
-  ));
+  );
 };
 
 export default NotesList;

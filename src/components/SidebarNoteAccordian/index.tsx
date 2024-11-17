@@ -18,7 +18,7 @@ const NoteAccordian: React.FC<Props> = (props) => {
         {isOpen ? props.expandedChild : null}
       </div>
       <button
-        className={`ml-auto h-[24px] w-[24px] ${
+        className={`hidden group-hover:block ml-auto h-[24px] w-[24px] ${
           isOpen
             ? `bg-[url('/keyboard_arrow_up.svg')]`
             : `bg-[url('/keyboard_arrow_down.svg')]`
