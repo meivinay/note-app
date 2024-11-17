@@ -22,3 +22,9 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@layer components {
+  .text-input-colors {
+    @apply border-sky-400 focus:border-sky-600 focus-visible:outline-sky-600;
+  }
+}
