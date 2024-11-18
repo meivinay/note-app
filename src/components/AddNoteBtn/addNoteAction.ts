@@ -1,4 +1,5 @@
 "use server";
+import { redirect } from "next/navigation";
 import db from "~/db";
 
 const addNote = async (formData: FormData) => {
@@ -12,6 +13,7 @@ const addNote = async (formData: FormData) => {
   } catch (e) {
     console.log(e);
   }
+  redirect("/");
 };
 
 export default addNote;

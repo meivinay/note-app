@@ -23,7 +23,13 @@ const DeleteBtn = (props: {
       title="delete note"
       aria-label="delete note"
     >
-      <Image src="/delete_52.svg" height="36" width="36" />
+      <Image
+        src="/delete_52.svg"
+        height="36"
+        width="36"
+        alt="delete note"
+        title="delete note"
+      />
     </button>
   );
 };

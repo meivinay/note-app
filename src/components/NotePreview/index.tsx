@@ -6,7 +6,7 @@ type Props = {
   description?: string;
   updateTime?: Date | undefined;
   className?: string | undefined;
-  noteId: number;
+  noteId?: number | undefined;
 };
 
 const NotePreview: React.FC<Props> = (props) => {
@@ -19,7 +19,9 @@ const NotePreview: React.FC<Props> = (props) => {
             <strong>Last Update On</strong>&nbsp;
             <span>{format(props.updateTime, "d MMM yyyy 'at' h:mm bb")}</span>
           </>
-          <DeleteBtn className="ml-auto" noteId={props.noteId} />
+          {props.noteId ? (
+            <DeleteBtn className="ml-auto" noteId={props.noteId} />
+          ) : null}
         </p>
       ) : null}
       <p className="text-5xl font-bold mb-1 text-zinc-900">{props.title}</p>

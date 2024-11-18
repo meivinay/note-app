@@ -2,10 +2,7 @@ import React, { Suspense } from "react";
 import Image from "next/image";
 import Search from "~/components/Search";
 import NotesList from "~/components/NotesList";
-import AddNoteBtn from "~/components/AddNoteBtn";
-import NewNoteForm from "~/components/NewNoteForm";
-import SubmitBtn from "~/components/SubmitBtn";
-import addNote from "~/components/AddNoteBtn/addNoteAction";
+import Link from "next/link";
 
 const Sidebar: React.FC<Props> = async (props) => {
   const { searchParams } = props;
@@ -14,7 +11,7 @@ const Sidebar: React.FC<Props> = async (props) => {
     <aside className="flex flex-col gap-y-4 bg-white p-4 rounded-xl">
       <div className="flex flex-col gap-y-4">
         <div>
-          <p className="flex gap-x-2 items-center">
+          <div className="flex gap-x-2 items-center">
             <Image
               alt="nextjs logo"
               height="48"
@@ -22,12 +19,19 @@ const Sidebar: React.FC<Props> = async (props) => {
               src="/nextjs-icon-dark-background.svg"
             />
             <strong className="text-2xl">Next Notes</strong>
-            <div className="flex flex-col grow">
-              <AddNoteBtn submitBtn={<SubmitBtn addNote={addNote} />}>
-                <NewNoteForm />
-              </AddNoteBtn>
-            </div>
-          </p>
+            <Link
+              href="/new"
+              className="rounded-xl text-white font-semibold text-lg ml-auto"
+            >
+              <Image
+                height="36"
+                width="36"
+                src="/note_add.svg"
+                alt="create a new note"
+                title="create a new note"
+              />
+            </Link>
+          </div>
         </div>
         <Search searchParams={q} />
       </div>
