@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React from "react";
 
 type Props = {
   children: React.ReactNode;
@@ -11,7 +11,6 @@ const AddNoteBtn: React.FC<Props> = ({ children, submitBtn }) => {
   const pathname = usePathname();
   const router = useRouter();
   const textAreaVisi = pathname === "/new" ? true : false;
-  // useState<boolean>();
 
   return (
     <>
