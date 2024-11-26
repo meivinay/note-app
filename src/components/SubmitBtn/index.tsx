@@ -2,7 +2,11 @@
 
 import { useRouter } from "next/navigation";
 
-const SubmitBtn = (props) => {
+type Props = {
+  addNote: (e: FormData) => void;
+};
+
+const SubmitBtn = (props: Props) => {
   const router = useRouter();
   return (
     <button

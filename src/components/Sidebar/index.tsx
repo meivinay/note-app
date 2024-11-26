@@ -4,6 +4,10 @@ import Search from "~/components/Search";
 import NotesList from "~/components/NotesList";
 import Link from "next/link";
 
+interface Props {
+  searchParams: Promise<{ [key: string]: string | undefined }>;
+}
+
 const Sidebar: React.FC<Props> = async (props) => {
   const { searchParams } = props;
   const { q = "", note_id: noteId } = await searchParams;
@@ -35,6 +39,7 @@ const Sidebar: React.FC<Props> = async (props) => {
         </div>
         <Search searchParams={q} />
       </div>
+
       <Suspense fallback={<p>Loading</p>}>
         <div className="">
           <NotesList {...props} searchParams={q} activeNoteId={noteId} />

@@ -29,7 +29,7 @@ const AddNoteBtn: React.FC<Props> = ({ children, submitBtn }) => {
           title="add new note"
           aria-label="add new note"
         >
-          <Image height="36" width="36" src="/note_add.svg" />
+          <Image alt="add note" height="36" width="36" src="/note_add.svg" />
           {/* {textAreaVisi && pathname === "/new" ? "Discard" : "NEW"} */}
         </button>
         {textAreaVisi ? submitBtn : null}

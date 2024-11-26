@@ -2,9 +2,8 @@ import db from "~/db";
 import SidebarNote from "../SidebarNote";
 
 type Props = {
-  searchText: string | undefined;
-  searchParams: string;
-  activeNoteId: string;
+  searchParams: string | undefined;
+  activeNoteId: string | undefined;
 };
 
 type Note = {

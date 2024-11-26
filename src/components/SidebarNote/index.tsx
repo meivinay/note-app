@@ -6,7 +6,7 @@ type Props = {
   title: string;
   body: string;
   updatedDate: Date;
-  searchParams: string;
+  searchParams: string | undefined;
   noteId: number;
 };
 
@@ -20,7 +20,7 @@ const SidebarNote: React.FC<Props> = (props) => {
       <Link
         href={{
           pathname: "",
-          query: { note_id: noteId, q: searchParams || undefined },
+          query: { note_id: noteId, q: searchParams },
         }}
       >
         <p className="font-bold text-lg">{title}</p>
