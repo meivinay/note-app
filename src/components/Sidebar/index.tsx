@@ -6,13 +6,14 @@ import Link from "next/link";
 
 interface Props {
   searchParams: Promise<{ [key: string]: string | undefined }>;
+  className: string | undefined
 }
 
 const Sidebar: React.FC<Props> = async (props) => {
-  const { searchParams } = props;
+  const { searchParams, className ='' } = props;
   const { q = "", note_id: noteId } = await searchParams;
   return (
-    <aside className="flex flex-col gap-y-4 bg-white p-4 rounded-xl">
+    <aside className={`flex flex-col gap-y-4 bg-white p-4 rounded-xl max-h-svh ${className}`}>
       <div className="flex flex-col gap-y-4">
         <div>
           <div className="flex gap-x-2 items-center">
@@ -41,7 +42,7 @@ const Sidebar: React.FC<Props> = async (props) => {
       </div>
 
       <Suspense fallback={<p>Loading</p>}>
-        <div className="">
+        <div className="flex-grow overflow-y-auto">
           <NotesList {...props} searchParams={q} activeNoteId={noteId} />
         </div>
       </Suspense>

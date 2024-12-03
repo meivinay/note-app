@@ -14,7 +14,8 @@ const config: Config = {
         test: "red",
       },
       gridTemplateColumns: {
-        twoColumn: "minmax(200px, 400px) minmax(700px, 1fr)",
+        "twoColumn-lg": "minmax(200px, 400px) minmax(728px, 1fr)",
+        "twoColumn-md": "40px 1fr",
       },
     },
   },
