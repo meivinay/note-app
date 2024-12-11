@@ -15,7 +15,7 @@ const Search: React.FC<Props> = (props) => {
       <input
         className="rounded border border-solid rounde  px-4 py-1 text-input-colors"
         placeholder="Search a Note"
-        value={searchParams || undefined}
+        value={searchParams || ""}
         onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
           if (event.target.value === "") {
             router.push("/");
