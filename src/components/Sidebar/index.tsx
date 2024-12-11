@@ -6,17 +6,19 @@ import Link from "next/link";
 
 interface Props {
   searchParams: Promise<{ [key: string]: string | undefined }>;
-  className: string | undefined
+  className: string | undefined;
 }
 
 const Sidebar: React.FC<Props> = async (props) => {
-  const { searchParams, className ='' } = props;
+  const { searchParams, className = "" } = props;
   const { q = "", note_id: noteId } = await searchParams;
   return (
-    <aside className={`flex flex-col gap-y-4 bg-white p-4 rounded-xl max-h-svh ${className}`}>
+    <aside
+      className={`flex h-full grow flex-col gap-y-4 bg-white p-4 rounded-r-md lg:rounded-xl max-h-svh ${className}`}
+    >
       <div className="flex flex-col gap-y-4">
         <div>
-          <div className="flex gap-x-2 items-center">
+          <div className="hidden lg:flex gap-x-2 items-center">
             <Image
               alt="nextjs logo"
               height="48"
